@@ -1,3 +1,9 @@
+org/afpa/gui/Exo1Controller.java
+ org.afpa.gui.Exo1Controller
+org/afpa/gui/Exo3Controller.java
+ org.afpa.gui.Exo3Controller
+org/afpa/gui/Exo2Controller.java
+ org.afpa.gui.Exo2Controller
 org/afpa/Main.java
  org.afpa.Main
 org/afpa/gui/HomeController.java
