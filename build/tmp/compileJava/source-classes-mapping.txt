@@ -1,12 +1,20 @@
-org/afpa/gui/HomeController.java
- org.afpa.gui.HomeController
+org/afpa/model/FournisseurDAO.java
+ org.afpa.model.FournisseurDAO
 org/afpa/gui/Exo3Controller.java
  org.afpa.gui.Exo3Controller
-org/afpa/gui/Exo2Controller.java
- org.afpa.gui.Exo2Controller
 org/afpa/Main.java
  org.afpa.Main
-org/afpa/gui/Error1Controller.java
- org.afpa.gui.Error1Controller
+org/afpa/model/Fournisseur.java
+ org.afpa.model.Fournisseur
+org/afpa/gui/HomeController.java
+ org.afpa.gui.HomeController
 org/afpa/gui/Exo1Controller.java
  org.afpa.gui.Exo1Controller
+org/afpa/gui/Error1Controller.java
+ org.afpa.gui.Error1Controller
+org/afpa/model/Commande.java
+ org.afpa.model.Commande
+org/afpa/model/CommandeDAO.java
+ org.afpa.model.CommandeDAO
+org/afpa/gui/Exo2Controller.java
+ org.afpa.gui.Exo2Controller

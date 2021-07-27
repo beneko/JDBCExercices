@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?><AnchorPane prefHeight="105.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.Error1Controller">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="105.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.Error1Controller">
    <children>
-      <HBox layoutX="39.0" layoutY="37.0" spacing="20.0">
+      <HBox layoutX="65.0" layoutY="37.0" spacing="20.0">
          <children>
             <Label prefHeight="32.0" prefWidth="240.0" text="Le fournisseur n'est pas trouvé !">
                <font>
