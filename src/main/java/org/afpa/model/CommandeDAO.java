@@ -9,6 +9,8 @@ import java.util.List;
 
 public class CommandeDAO {
 
+    private static ResultSet resultSet;
+
     public static List<Commande> getFournisCommandes(int numfou){
 
         List<Commande> commandeList = new ArrayList<Commande>();
@@ -18,9 +20,18 @@ public class CommandeDAO {
             String url = "jdbc:mariadb://localhost:3306/papyrus";
             Connection connection = DriverManager.getConnection(url, "root" , "root");
 
-            PreparedStatement  preparedStatement = connection.prepareStatement("SELECT numcom, datcom, obscom FROM entcom WHERE numfou=? ");
-            preparedStatement.setInt(1, numfou);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            if(numfou == 0 ){
+                Statement statement = connection.createStatement();
+                resultSet = statement.executeQuery("SELECT numcom, datcom, obscom FROM entcom");
+                statement.close();
+
+            }else{
+                PreparedStatement  preparedStatement = connection.prepareStatement("SELECT numcom, datcom, obscom FROM entcom WHERE numfou=? ");
+                preparedStatement.setInt(1, numfou);
+                resultSet = preparedStatement.executeQuery();
+                preparedStatement.close();
+            }
+
 
             while (resultSet.next()) {
                 Commande commande = new Commande();
@@ -28,9 +39,10 @@ public class CommandeDAO {
                 commande.setDatecom(resultSet.getTimestamp("datcom"));
                 commande.setObscom(resultSet.getString("obscom"));
                 commandeList.add(commande);
+
             }
 
-            preparedStatement.close();
+
             resultSet.close();
             connection.close();
 
