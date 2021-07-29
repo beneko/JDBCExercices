@@ -7,9 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import org.afpa.model.Commande;
-import org.afpa.model.CommandeDAO;
-import org.afpa.model.FournisseurDAO;
+import org.afpa.dal.CommandeDAO;
+import org.afpa.dal.FournisseurDAO;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,20 +22,22 @@ public class Exo2Controller {
     public HashMap <String, Integer> fournisseurList;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         ObservableList<String> fournis = FXCollections.observableArrayList();
-        fournisseurList = FournisseurDAO.getFounisNomList();
+        FournisseurDAO fournisseurDAO = new FournisseurDAO();
+        fournisseurList = fournisseurDAO.getAll();
         fournisseurList.put("Tous",0);
         fournis.addAll(fournisseurList.keySet());
         comboBox.setItems(fournis);
-        System.out.println(fournisseurList);
+//        System.out.println(fournisseurList);
     }
 
 
-    public void getFournisCommandes(ActionEvent actionEvent) {
+    public void getCommandes(ActionEvent actionEvent) throws SQLException {
 
         String nomFou = comboBox.getSelectionModel().getSelectedItem();
-        List<Commande> commandes = CommandeDAO.getFournisCommandes(fournisseurList.get(nomFou));
+        CommandeDAO commandeDAO = new CommandeDAO();
+        List<Commande> commandes = commandeDAO.getCommandeByFournisseur(fournisseurList.get(nomFou));
 
         if (commandes.size()>0){
             textArea.clear();

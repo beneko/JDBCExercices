@@ -1,11 +1,11 @@
 package org.afpa.gui;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.afpa.Main;
-
-import java.sql.*;
+import org.afpa.dal.FournisseurDAO;
+import org.afpa.model.Fournisseur;
 
 public class Exo1Controller {
 
@@ -21,27 +21,26 @@ public class Exo1Controller {
         if(!numFouField.getText().equals("") && numFouField.getText().length()<12){
 
             try {
+                FournisseurDAO fournisseurDAO = new FournisseurDAO();
+                Fournisseur fournisseur = fournisseurDAO.getOne(Integer.parseInt(numFouField.getText()));
+                if(fournisseur.toString() != null){
 
-                String url = "jdbc:mariadb://localhost:3306/papyrus";
-                Connection connection = DriverManager.getConnection(url, "root" , "root");
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM fournis WHERE numfou=?");
-                preparedStatement.setInt(1,Integer.parseInt(numFouField.getText()));
-                ResultSet resultSet =    preparedStatement.executeQuery();
-                if (!resultSet.next()) {
-                    Main.changeFxml("error1");
+                    nomField.setText(fournisseur.getNomfou());
+                    adresseField.setText(fournisseur.getRuefou());
+                    cpField.setText(fournisseur.getPosfou());
+                    villeFiled.setText(fournisseur.getVilfou());
+                    contactField.setText(fournisseur.getConfou());
+
+                }else {
+                    nomField.clear();
+                    adresseField.clear();
+                    cpField.clear();
+                    villeFiled.clear();
+                    contactField.clear();
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("le fournisseur n'existe pas !!");
+                    alert.showAndWait();
                 }
-                while (resultSet.next()){
-                    nomField.setText(resultSet.getString("nomfou"));
-                    adresseField.setText(resultSet.getString("ruefou"));
-                    cpField.setText(resultSet.getString("posfou"));
-                    villeFiled.setText(resultSet.getString("vilfou"));
-                    contactField.setText(resultSet.getString("confou"));
-                }
-
-                preparedStatement.close();
-                resultSet.close();
-                connection.close();
-
 
             }catch (Exception e){
                 System.out.println("Error");

@@ -1,7 +1,6 @@
-package org.afpa.model;
+package org.afpa.dal;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import org.afpa.model.Commande;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,24 +8,28 @@ import java.util.List;
 
 public class CommandeDAO {
 
-    private static ResultSet resultSet;
+    private static PapyrusDB papyrusDB;
 
-    public static List<Commande> getFournisCommandes(int numfou){
+    public CommandeDAO() throws SQLException {
+        papyrusDB = new PapyrusDB();
+    }
 
-        List<Commande> commandeList = new ArrayList<Commande>();
+    public List<Commande> getCommandeByFournisseur(int numfou){
+
+        List<Commande> commandeList = new ArrayList<>();
 
         try {
 
-            String url = "jdbc:mariadb://localhost:3306/papyrus";
-            Connection connection = DriverManager.getConnection(url, "root" , "root");
 
+
+            ResultSet resultSet;
             if(numfou == 0 ){
-                Statement statement = connection.createStatement();
+                Statement statement = papyrusDB.getCon().createStatement();
                 resultSet = statement.executeQuery("SELECT numcom, datcom, obscom FROM entcom");
                 statement.close();
 
             }else{
-                PreparedStatement  preparedStatement = connection.prepareStatement("SELECT numcom, datcom, obscom FROM entcom WHERE numfou=? ");
+                PreparedStatement  preparedStatement = papyrusDB.getCon().prepareStatement("SELECT numcom, datcom, obscom FROM entcom WHERE numfou=? ");
                 preparedStatement.setInt(1, numfou);
                 resultSet = preparedStatement.executeQuery();
                 preparedStatement.close();
@@ -44,11 +47,10 @@ public class CommandeDAO {
 
 
             resultSet.close();
-            connection.close();
+            papyrusDB.getCon().close();
 
-        } catch (Exception e) {
-            System.out.println("Erreur de lecture 'fournisseur'");
-            System.out.println(e.getMessage());
+        } catch (Exception throwable) {
+            throwable.printStackTrace();
         }
 
         return commandeList;

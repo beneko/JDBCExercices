@@ -13,14 +13,14 @@ public class Fournisseur {
     public Fournisseur() {
     }
 
-    public Fournisseur(Integer numfou, String nomfou, String ruefou, String posfou, String vilfou, String confou, Integer satisf) {
-        this.numfou = numfou;
+    public Fournisseur(String nomfou, String ruefou, String posfou, String vilfou, String confou) {
+
         this.nomfou = nomfou;
         this.ruefou = ruefou;
         this.posfou = posfou;
         this.vilfou = vilfou;
         this.confou = confou;
-        this.satisf = satisf;
+
     }
 
     public Integer getNumfou() {

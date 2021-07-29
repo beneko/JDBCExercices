@@ -8,24 +8,24 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.HomeController">
    <children>
-      <Label layoutX="154.0" layoutY="45.0" text="JDBC Exercices">
+      <Label layoutX="165.0" layoutY="52.0" text="JDBC Papyrus">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="116.0" layoutY="200.0" spacing="30.0">
+      <HBox alignment="CENTER" layoutX="47.0" layoutY="200.0" spacing="30.0">
          <children>
-            <Button fx:id="exo1" mnemonicParsing="false" onAction="#newWindow" text="Exercice 1">
+            <Button fx:id="exo1" mnemonicParsing="false" onAction="#newWindow" text="Fournisseurs">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="exo2" mnemonicParsing="false" onAction="#newWindow" text="Exercice 2">
+            <Button fx:id="exo2" mnemonicParsing="false" onAction="#newWindow" text="Commandes">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="exo3" mnemonicParsing="false" onAction="#newWindow" text="Exercice 3">
+            <Button fx:id="exo3" mnemonicParsing="false" onAction="#newWindow" text="Ajouter un fournisseur">
                <font>
                   <Font size="18.0" />
                </font>

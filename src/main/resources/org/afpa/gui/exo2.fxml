@@ -19,7 +19,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comboBox" onAction="#getFournisCommandes" prefHeight="25.0" prefWidth="271.0" promptText="Choisissez" />
+                  <ComboBox fx:id="comboBox" onAction="#getCommandes" prefHeight="25.0" prefWidth="271.0" promptText="Choisissez" />
                </children>
             </HBox>
             <TextArea fx:id="textArea" editable="false" prefHeight="256.0" prefWidth="503.0" />

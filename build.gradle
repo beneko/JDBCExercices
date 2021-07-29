@@ -7,6 +7,9 @@ plugins {
 group 'org.afpa'
 version '1.0-SNAPSHOT'
 
+// Accepter les types .fxml, .css, .png...
+
+
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
